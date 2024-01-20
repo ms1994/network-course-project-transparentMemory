@@ -26,3 +26,10 @@ where the port nodes are:
 
  Example: for simulate the node 2, you have to execute:
  ./node0 127.0.0.1 2005 2007 2004
+
+
+You can make get request and put request.
+For a get request you can do get node_index to see the value on the console.
+
+For put request you can use: put node_index val
+to replace the value on that node.
