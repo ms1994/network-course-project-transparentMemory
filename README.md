@@ -8,7 +8,7 @@ You must executed like:
 
 where the port nodes are:
 
- node 0: port tcp 2000 port udp 2001
+ node 0: port tcp 2000 port udp 2001\n
  node 1: port tcp 2002 port udp 2003
  node 2: port tcp 2004 port udp 2005
  node 3: port tcp 2006 port udp 2007
