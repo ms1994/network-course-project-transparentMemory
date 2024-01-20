@@ -39,7 +39,7 @@ void init_nodes() {
         nodes[i].port_tcp = port++;
         nodes[i].port_udp = port++;
         nodes[i].ip_str = IP;
-        std::cout << " index: " << i << " port tcp " << nodes[i].port_tcp << " port udp " << nodes[i].port_udp << '\n'; 
+        //std::cout << " index: " << i << " port tcp " << nodes[i].port_tcp << " port udp " << nodes[i].port_udp << '\n'; 
     }
 }
 
@@ -222,7 +222,7 @@ bool send_as_x(const std::string& ip, int port, char symbol, node curr) {
         }
         // Null-terminate the received data to make it a valid C-string
         buffer[received_bytes] = '\0';
-        std::cout << "Received message: " << buffer << std::endl;
+        //std::cout << "Received message: " << buffer << std::endl;
         // Close the client socket
         //close(new_socket);
 
@@ -417,7 +417,7 @@ int32_t main(int argc,char *argv[]) {
                     int node_number = get_node_key(read_value(val1));
                     x = read_value(val2);
                     if (isCurrentNode(node_number, current_nodes.first)) {
-                        printf("current node\n");
+                        //printf("current node\n");
                         hashTable[node_number] = x;
 
                     }
@@ -442,7 +442,7 @@ int32_t main(int argc,char *argv[]) {
                     int node_number = get_node_key(read_value(val1));
 
                     if (isCurrentNode(node_number, current_nodes.first)) {
-                        printf("current node\n");
+                        //printf("current node\n");
                         //hashTable[node_number] = x;
                         std::cout << hashTable[node_number] << '\n';
 
@@ -480,7 +480,7 @@ int32_t main(int argc,char *argv[]) {
             }
 
             rec_buff[len] = '\0'; // end of the string
-            printf("%s\n",rec_buff);
+            //printf("%s\n",rec_buff);
             
             std::vector<std::string> received_message = extractFromMsg(rec_buff, sizeof(rec_buff));
 
@@ -513,7 +513,7 @@ int32_t main(int argc,char *argv[]) {
             else {
                 // is for me, check the content of the message if is a put or a get
                 // and do something depends of what is
-                printf("Received message to me\n");
+                //printf("Received message to me\n");
 
                 if (received_message[0] == PUT_FORWARD) {
                     // is from a put request, send tcp message to originator asking for what_x
@@ -557,7 +557,7 @@ int32_t main(int argc,char *argv[]) {
             }
             // Null-terminate the received data to make it a valid C-string
             buffer[received_bytes] = '\0';
-            std::cout << "Received message: " << buffer << std::endl;
+            //std::cout << "Received message: " << buffer << std::endl;
             // Close the client socket
             //close(new_socket);
 
@@ -567,19 +567,19 @@ int32_t main(int argc,char *argv[]) {
                 perror("Error message received\n");
                 exit(1);
             }
-            std::cout << received_message[0] << " received " << received_message[1] << '\n'; 
+            //std::cout << received_message[0] << " received " << received_message[1] << '\n'; 
             // check if the message received is for put or get reply (what_x)
             if (received_message[0] == WHAT_X) {
                 std::string message_reply = "";
                 if (received_message[1] == "P") {
                     // what for a put request, send value of x
                     message_reply = PUT_REPLY_X;
-                    printf("what x para put\n");
+                    //printf("what x para put\n");
                 }
                 else {
                     // is for a get request
                     message_reply = GET_REPLY_X;
-                    printf("what x para get\n");
+                    //printf("what x para get\n");
                 }
                 message_reply += " ";
                 message_reply += std::to_string(x);
@@ -588,7 +588,7 @@ int32_t main(int argc,char *argv[]) {
                     perror("Error al send");
                     exit(1);
                 }
-                printf("message send %s\n", msg_reply);
+                //printf("message send %s\n", msg_reply);
                 //read(new_socket, buffer, 1024);
             	//printf("\n%s\n",buffer);
                 //close(new_socket);
